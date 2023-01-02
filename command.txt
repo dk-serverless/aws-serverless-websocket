@@ -1,0 +1,29 @@
+-- CREATE
+aws lambda create-function --function-name '' \
+--runtime nodejs14.x --zip-file fileb://function.zip \
+--handler index.handler --role arn:aws:iam::344513066772:role/lambda-ex
+
+-- UPDATE
+aws lambda update-function-code --function-name '' \
+--zip-file fileb://function.zip
+
+-- ZIP
+rm-rf function.zip && zip function.zip
+
+-- CONFIG
+aws lambda update-function-configuration --function-name '' \
+--environment 'Variables={env=dev, author=leedonggyu}'
+
+-- INVOKE
+aws lambda invoke --function-name '' \
+--cli-binary-format raw-in-base64-out --payload file://request.json response.json
+
+-- DELTE
+aws lambda delete-function --function-name calc-function
+
+-- ROLE
+aws iam get-role --role-name lambda-ex
+
+-- DEPLOY
+CREATE -> ZIP -> CONFIG -> UPDATE -> INVOKE
+

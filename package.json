@@ -1,0 +1,18 @@
+{
+  "name": "sls-event-driven",
+  "version": "1.0.0",
+  "description": "## Trigger",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "deploy": "node ./command.js",
+    "delete": "aws lambda delete-function --function-name calc-function",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "qoa": "^0.2.0",
+    "shelljs": "^0.8.5"
+  }
+}
